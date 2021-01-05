@@ -10,6 +10,7 @@ compose_dotplot(
   pitch,
   filename,
   handle_collisions = "superimpose",
+  envelope.shape = "hairpin",
   chart.duration = 10,
   beep.duration = 0.1,
   ...

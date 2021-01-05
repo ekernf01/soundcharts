@@ -67,6 +67,15 @@ add_pitch_legend = function(x,
   return(filename)
 }
 
+make_envelope = function(beep.length, envelope.shape = "hairpin"){
+  if(envelope.shape=="hairpin"){
+    e = (1:beep.length) %>% subtract((beep.length+1)/2) %>% abs %>% subtract((beep.length+1)/2, .)
+  } else if(envelope.shape=="constant"){
+    e = rep(10, beep.length)
+  }
+  return(e)
+}
+
 #' Make a dotplot where x axis is time, y axis is pitch, and each dot is a beep.
 #'
 #' @param data Dataframe in long format.
@@ -82,6 +91,7 @@ compose_dotplot = function(
   pitch,
   filename,
   handle_collisions = "superimpose",
+  envelope.shape = "hairpin",
   chart.duration = 10,
   beep.duration = 0.1,
   ...
@@ -90,6 +100,10 @@ compose_dotplot = function(
   collision_handling_options = c("superimpose", "overwrite")
   if(!handle_collisions %in% collision_handling_options){
     stop("handle_collisions must match one of\n" %>% paste(paste(collision_handling_options, collapse = " ")))
+  }
+  envelope.shape_options = c("hairpin", "constant")
+  if(!envelope.shape %in% envelope.shape_options){
+    stop("envelope.shape must match one of\n" %>% paste(paste(envelope.shape_options, collapse = " ")))
   }
   # Set up pitch scale
   legend.wave = tuneR::readWave(add_pitch_legend(x = data[[pitch]], filename = tempfile(), ...))
@@ -109,7 +123,7 @@ compose_dotplot = function(
     if( handle_collisions == "superimpose"){
       chart.wave[ a + 1:beep.length ] =
         chart.wave[ a + 1:beep.length ] +
-        seewave::synth2(env = rep(10, beep.length),
+        seewave::synth2(env = make_envelope(beep.length, envelope.shape),
                         ifreq = rep(scaled_data[["pitch"]][[i]], beep.length),
                         f = chart.rate)
     } else if( handle_collisions == "overwrite" ) {

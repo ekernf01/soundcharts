@@ -13,7 +13,8 @@ Default is A440 plus or minus an octave.}
 \item{relative}{If false, equal intervals in data are separated by equal
 intervals in absolute pitch (equal numbers of Hz).
 If true, equal intervals in data are separated by equal
-intervals in relative pitch (equal numbers of cents or semitones or octaves).}
+intervals in relative pitch (equal numbers of cents or semitones or octaves).
+Relative pitch is preferred for perceptual accuracy.}
 }
 \description{
 Convert an abstract set of numbers into frequencies suitable for human ears.
