@@ -8,12 +8,16 @@ arpeggiation of the corresponding pitches ("boo doe daa deep").}
 \usage{
 add_pitch_legend(
   x,
-  filename,
   break_values = pretty(x, 3),
   stagger.duration = 0.25,
   beep.duration = 0.75,
   ...
 )
+}
+\arguments{
+\item{x}{@break_values Pitch values for the whole plot and the legend respectively.}
+
+\item{filename}{Where to store the output}
 }
 \description{
 Add a text-to-speech legend for the pitch scale.

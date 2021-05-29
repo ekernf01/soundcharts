@@ -4,6 +4,7 @@ test_that("dotplot  works", {
       for(es in c("constant", "hairpin")){
         compose_dotplot(
           data = ggplot2::diamonds,
+          main = "ggplot diamond data",
           time = "carat",
           pitch = "price",
           handle_collisions = hc,
@@ -28,6 +29,7 @@ test_that("sp500 demo works", {
       for(es in c("constant", "hairpin")){
         compose_dotplot(
           data = sp500,
+          main = "s and p 500 data",
           time = "DaysSinceStart",
           pitch = "Close",
           beep.duration = bd,

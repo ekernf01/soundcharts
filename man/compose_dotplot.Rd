@@ -6,6 +6,7 @@
 \usage{
 compose_dotplot(
   data,
+  main,
   time,
   pitch,
   filename,
@@ -18,6 +19,8 @@ compose_dotplot(
 }
 \arguments{
 \item{data}{Dataframe in long format.}
+
+\item{main}{Character of length 1. Chart title.}
 
 \item{time}{@param pitch Columns from \code{data}.}
 
