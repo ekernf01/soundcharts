@@ -7,11 +7,10 @@ The `soundcharts` project aims to make it easy for data analysts to render quant
 This is a work in progress containing only basic "scatterplot" type features. Planned features include:
 
 - Removal of click/buzz artifacts and experimentation with resolution of dense time-series
-- Legends on the time axis
 - Experimentation with tone colors, chords, or stereo to display multiple series in comparison
 - More demo datasets, including a sparse/simple demo of some sort and a Covid-19 demo
 - Categorical data support for time axis and pitch axis
-- Axis titles
+- faceting? Maybe?
 
 #### Installation notes
 
